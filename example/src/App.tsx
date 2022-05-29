@@ -6,7 +6,7 @@ import { CanvaasApiView } from 'react-native-canvaas-api';
 export default function App() {
   return (
     <View style={styles.container}>
-      <CanvaasApiViewManager color="#32a852" style={styles.box} />
+      <CanvaasApiView color="#32a852" style={styles.box} />
     </View>
   );
 }

@@ -5,6 +5,10 @@ import android.view.View
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
+// Add android Canvas package
+import android.graphics.Canvas
+
+// Native Canvas API like web canvas API
 
 class CanvaasApiViewManager : SimpleViewManager<View>() {
   override fun getName() = "CanvaasApiView"
@@ -13,8 +17,12 @@ class CanvaasApiViewManager : SimpleViewManager<View>() {
     return View(reactContext)
   }
 
-  @ReactProp(name = "color")
-  fun setColor(view: View, color: String) {
-    view.setBackgroundColor(Color.parseColor(color))
+  // Get Canvas Context
+  override fun onAfterUpdateTransaction(view: View) {
+    super.onAfterUpdateTransaction(view)
+    val canvas = Canvas(view.width, view.height)
+    canvas.drawColor(Color.RED)
+    view.setBackground(canvas)
   }
+
 }
